@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$BUNNY — The Warren That Doesn't Rug</title>
+<link rel="icon" type="image/png" href="./avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1E7D0;
+    --paper-deep:#E8DABB;
+    --ink:#201C16;
+    --fur:#9C9B8E;
+    --fur-light:#DAD7C7;
+    --carrot:#E3711B;
+    --blush:#E4A0A4;
+    --sky:#5F98A6;
+    --radius-card: 10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--paper);
+    background-image: radial-gradient(var(--fur-light) 1.1px, transparent 1.1px);
+    background-size: 16px 16px;
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:28px;padding-bottom:28px;
+  }
+  .brandmark{display:flex;align-items:center;gap:10px;font-family:'Fredoka';font-weight:600;font-size:1.15rem;}
+  .brandmark .dot{width:14px;height:14px;border-radius:50%;background:var(--carrot);display:inline-block;}
+  .brandmark img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--ink);}
+  .navlinks{display:flex;gap:22px;font-size:0.92rem;}
+  .navlinks a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .15s ease;}
+  .navlinks a:hover{border-color:var(--carrot);}
+
+  /* HERO */
+  .hero{padding:56px 0 40px;text-align:center;}
+  .hero .eyebrow{
+    font-size:0.85rem;color:var(--sky);font-weight:500;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(3.4rem, 12vw, 6.6rem);
+    font-weight:700;
+    color:var(--carrot);
+    -webkit-text-stroke:2.5px var(--ink);
+    text-stroke:2.5px var(--ink);
+    animation:hop 900ms cubic-bezier(.36,1.6,.6,1) 1;
+  }
+  @keyframes hop{
+    0%{transform:translateY(40px) scale(.85);opacity:0;}
+    60%{transform:translateY(-10px) scale(1.03);opacity:1;}
+    100%{transform:translateY(0) scale(1);}
+  }
+  .hero-banner{
+    max-width:720px;width:100%;height:auto;margin:0 auto;
+    border-radius:var(--radius-card);
+    animation:hop 900ms cubic-bezier(.36,1.6,.6,1) 1;
+  }
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  .hero p.tagline{
+    max-width:520px;margin:18px auto 0;
+    font-size:1.15rem;
+  }
+  .mascot-slot{
+    width:220px;height:220px;margin:36px auto 8px;
+    border:3px dashed var(--fur);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--fur);font-size:0.85rem;text-align:center;padding:10px;
+    background:rgba(255,255,255,0.25);
+  }
+  .mascot-slot span{max-width:150px;}
+
+  .ca-box{
+    margin:34px auto 0;
+    max-width:560px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:var(--radius-card);
+    padding:16px 20px;
+    display:flex;align-items:center;gap:14px;
+    font-family:monospace;
+    font-size:0.85rem;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .ca-box .label{font-family:'Space Grotesk';font-size:0.72rem;color:var(--blush);text-transform:uppercase;letter-spacing:0.06em;}
+  .ca-box button{
+    background:var(--carrot);color:var(--ink);border:none;border-radius:6px;
+    padding:8px 14px;font-family:'Space Grotesk';font-weight:700;cursor:pointer;font-size:0.8rem;
+  }
+  .buy-links{margin-top:22px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .buy-links a{
+    text-decoration:none;font-weight:600;padding:12px 26px;border-radius:999px;
+    border:2.5px solid var(--ink);font-size:0.95rem;
+  }
+  .buy-links a.primary{background:var(--carrot);color:var(--ink);}
+  .buy-links a.secondary{background:transparent;}
+
+  /* SECTIONS */
+  section{padding:64px 0;}
+  .section-title{font-size:1.9rem;margin-bottom:20px;max-width:560px;}
+  .card{
+    background:var(--paper-deep);
+    border:2px solid var(--ink);
+    border-radius:var(--radius-card);
+    padding:26px;
+  }
+
+  .story p{max-width:640px;font-size:1.03rem;}
+
+  .pledge-list{list-style:none;margin:0;padding:0;display:grid;gap:16px;}
+  .pledge-item{
+    display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;
+    background:#fff8ea;border:2px solid var(--ink);border-radius:var(--radius-card);
+    padding:18px 20px;
+  }
+  .pledge-item .num{
+    font-family:'Fredoka';font-weight:700;font-size:1.6rem;color:var(--carrot);
+  }
+  .pledge-item h3{font-size:1.05rem;margin-bottom:6px;}
+  .pledge-item p{margin:0;font-size:0.94rem;color:#3a352b;}
+
+  .warren{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:16px;
+  }
+  .warren a{
+    text-decoration:none;
+    display:flex;flex-direction:column;gap:6px;
+    background:var(--sky);color:#fff;
+    border:2px solid var(--ink);border-radius:var(--radius-card);
+    padding:20px;
+  }
+  .warren a:nth-child(2){background:var(--carrot);color:var(--ink);}
+  .warren a:nth-child(3){background:var(--blush);color:var(--ink);}
+  .warren a:nth-child(4){background:var(--ink);color:var(--paper);}
+  .warren .plat{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;opacity:0.85;}
+  .warren .handle{font-family:'Fredoka';font-weight:600;font-size:1.15rem;}
+
+  footer{padding:40px 0 60px;border-top:2px solid var(--ink);margin-top:20px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.82rem;color:#5a5546;}
+
+  @media (max-width:640px){
+    .navlinks{display:none;}
+    .ca-box{font-size:0.72rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="wrap">
+  <div class="brandmark"><img src="./avatar.png" alt="$BUNNY avatar"> $BUNNY</div>
+  <div class="navlinks">
+    <a href="#story">Story</a>
+    <a href="#pledge">The Pledge</a>
+    <a href="#warren">Warren</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="eyebrow">Solana · Community-first · No rug, on record</div>
+  <h1 class="display sr-only">$BUNNY</h1>
+  <img class="hero-banner" src="./banner.jpg" alt="$BUNNY — cartoon rabbit chasing a carrot next to the $BUNNY logo">
+  <p class="tagline">A rabbit with nothing to hide. Every buy is public, every week, on-chain — built by someone who got rugged enough times to do it differently.</p>
+
+  <div class="mascot-slot" style="border-style:solid;background:none;">
+    <img src="./mascot-full.png" alt="$BUNNY mascot waving" style="max-width:100%;max-height:100%;">
+  </div>
+
+  <div class="ca-box">
+    <div>
+      <div class="label">Contract address</div>
+      <div id="ca-text">21Hr8Rc9NTUBKcpzXL67SHdQgcwcY7Hdeku5UyCWpump</div>
+    </div>
+    <button type="button" id="copy-ca">Copy</button>
+  </div>
+
+  <div class="buy-links">
+    <a class="primary" href="https://join.pump.fun/HSag/tku4mxif" id="pumpfun-link" target="_blank" rel="noopener noreferrer">Buy on pump.fun</a>
+    <a class="secondary" href="#" id="dex-link">View chart</a>
+  </div>
+</header>
+
+<section id="story" class="wrap story">
+  <h2 class="section-title">Why a rabbit, why now</h2>
+  <p>Most people who mint a coin have never held the bag when one went to zero overnight. I have — more than once. $BUNNY starts differently: no presale sniping, no CA dropped before there's anyone here to catch it. Just a cartoon rabbit, a community built over the first couple of weeks, and a founder who's putting his own money in publicly, on a schedule, in front of everyone.</p>
+  <p>If this works, it works because the people who show up early actually trust what they're looking at — not because of hype that evaporates by the second chart candle.</p>
+</section>
+
+<section id="pledge" class="wrap">
+  <h2 class="section-title">The Pledge</h2>
+  <ul class="pledge-list">
+    <li class="pledge-item">
+      <div class="num">1</div>
+      <div>
+        <h3>Weeks 1–2: community before contract</h3>
+        <p>Telegram, Discord and X go live first. No CA yet — the warren gets built before the token does.</p>
+      </div>
+    </li>
+    <li class="pledge-item">
+      <div class="num">2</div>
+      <div>
+        <h3>Every week: $100 buy, visible on-chain</h3>
+        <p>A standing $100 DCA buy into $BUNNY, every single week, from the founder wallet. Check the chain, not my word.</p>
+      </div>
+    </li>
+    <li class="pledge-item">
+      <div class="num">3</div>
+      <div>
+        <h3>Every month: +$300 on top</h3>
+        <p>An additional $300 buy each month, on top of the weekly $100 — because a real commitment should compound.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section id="warren" class="wrap">
+  <h2 class="section-title">Join the warren</h2>
+  <div class="card" style="margin-bottom:20px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+    <img src="./stickers.png" alt="$BUNNY sticker pack — six rabbit expressions" style="width:120px;height:auto;flex-shrink:0;">
+    <p style="margin:0;">The community comes first here. Come talk, ask questions, watch the wallet — the socials below are where it's actually happening. (Sticker pack's already made for Telegram/Discord.)</p>
+  </div>
+  <div class="warren">
+    <a href="https://t.me/bunnyofficialtg" id="telegram-link"><span class="plat">Telegram</span><span class="handle">Public group</span></a>
+    <a href="https://discord.gg/AwYW5gkcq" id="discord-link"><span class="plat">Discord</span><span class="handle">Server</span></a>
+    <a href="https://x.com/meiiids" id="x-link"><span class="plat">X</span><span class="handle">@meiiids</span></a>
+    <a href="https://github.com/" id="github-link"><span class="plat">GitHub</span><span class="handle">Source / this site</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>$BUNNY — built on Solana. Not financial advice, do your own research.</span>
+    <span>© 2026 $BUNNY</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('copy-ca').addEventListener('click', async function () {
+    const button = this;
+    try {
+      await navigator.clipboard.writeText(document.getElementById('ca-text').textContent.trim());
+      button.textContent = 'Copied!';
+    } catch (error) {
+      button.textContent = 'Copy failed';
+    }
+    window.setTimeout(() => { button.textContent = 'Copy'; }, 1600);
+  });
+</script>
+
+</body>
+</html>
